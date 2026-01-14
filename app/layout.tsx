@@ -19,7 +19,6 @@ export const metadata: Metadata = {
     {
       rel: "icon",
       url: "/Logo_Lampung_Selatan.ico",  // Path ke ikon
-      sizes: "10x10", // Ukuran ikon
     },
   ],
 };
