@@ -58,7 +58,23 @@ Grid fasilitas yang tersedia.
 
 ---
 
-### 5. **WisataSidebar.tsx**
+### 5. **WisataRelatedInfo.tsx**
+Section informasi terkait layanan pendukung wisata.
+
+**Props:**
+- `label`: Label kecil di atas judul
+- `title`: Judul section
+- `description`: Deskripsi singkat (optional)
+- `categories`: Array kategori layanan dengan item detail
+
+**Fitur:**
+- Multi kategori layanan
+- Card list dengan rating dan harga
+- Layout responsive dengan grid
+
+---
+
+### 6. **WisataSidebar.tsx**
 Sticky sidebar dengan informasi penting.
 
 **Props:**
@@ -97,6 +113,27 @@ export const wisataData: Record<string, WisataData> = {
     facilities: [
       { icon: Car, name: "Parkir Luas" }
     ],
+    relatedInfo: {
+      label: "LAYANAN WISATA",
+      title: "Fasilitas Pendukung Wisata",
+      description: "Nikmati berbagai layanan pendukung",
+      categories: [
+        {
+          icon: Hotel,
+          title: "Penginapan",
+          items: [
+            {
+              title: "Homestay Sawah Indah",
+              description: "Penginapan nyaman dengan pemandangan sawah",
+              price: "Rp 250.000",
+              priceUnit: "per malam",
+              rating: 4.8,
+              href: "#"
+            }
+          ]
+        }
+      ]
+    },
     location: "Alamat lengkap",
     operationalHours: "Senin - Minggu: 07.00 - 17.00",
     contact: "+62 xxx",
@@ -111,7 +148,7 @@ export const wisataData: Record<string, WisataData> = {
 
 ```typescript
 import { getWisataBySlug } from "@/lib/data/wisata-data"
-import { WisataHero, WisataInfo, WisataGallery, WisataFacilities, WisataSidebar } from "@/components/wisata"
+import { WisataHero, WisataInfo, WisataGallery, WisataFacilities, WisataRelatedInfo, WisataSidebar } from "@/components/wisata"
 
 export default function WisataDetailPage({ params }: PageProps) {
   const wisata = getWisataBySlug(params.slug)
@@ -124,6 +161,7 @@ export default function WisataDetailPage({ params }: PageProps) {
           <WisataInfo description={wisata.description} />
           <WisataGallery images={wisata.gallery} />
           <WisataFacilities facilities={wisata.facilities} />
+          <WisataRelatedInfo {...wisata.relatedInfo} />
         </div>
         <div className="lg:col-span-1">
           <WisataSidebar {...wisata} />
