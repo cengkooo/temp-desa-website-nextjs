@@ -24,7 +24,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Mountain className="w-8 h-8 text-blue-600" />
-            <span className="text-xl font-bold text-slate-900">Desa Wisata</span>
+            <span className="text-xl font-bold text-slate-900">WAY KALAM</span>
           </Link>
 
           {/* Nav Links */}
