@@ -2,22 +2,22 @@ import Image from "next/image"
 
 const galleryImages = [
   {
-    src: "/uploaded_image_0_1768037972713.png",
+    src: "/img1.jpeg",
     alt: "Gallery 1",
     className: "md:col-span-2 md:row-span-2 relative h-[500px]"
   },
   {
-    src: "/uploaded_image_2_1768037972713.png",
+    src: "/img2.jpeg",
     alt: "Gallery 2",
     className: "relative h-[240px]"
   },
   {
-    src: "/uploaded_image_1_1768037972713.png",
+    src: "/img3.png",
     alt: "Gallery 3",
     className: "relative h-[240px]"
   },
   {
-    src: "/uploaded_image_4_1768037972713.png",
+    src: "/p9.png",
     alt: "Gallery 4",
     className: "relative h-[240px]"
   }
