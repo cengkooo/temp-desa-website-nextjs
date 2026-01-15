@@ -28,7 +28,7 @@ const teamMembers = [
   { name: "Muhamad Rafi Ilham", role: "Staff Divisi Operasional", division: "Teknik Informatika, Institut Teknologi Sumatera" },
   { name: "Jefri wahyu Fernando Sembiring", role: "Staff Divisi Operasional", division: "Teknik Informatika, Institut Teknologi Sumatera" },
   { name: "Kevin Sebayang", role: "Staff Divisi Operasional", division: "Rekayasa Kehutanan, Institut Teknologi Sumatera" },
-  { name: "Andryano Limbong", role: "Anggota", division: "Teknik Informatika, Institut Teknologi Sumatera" },
+  { name: "Andryano Limbong", role: "Staff Divisi Operasional", division: "Teknik Informatika, Institut Teknologi Sumatera" },
 
 ]
 
