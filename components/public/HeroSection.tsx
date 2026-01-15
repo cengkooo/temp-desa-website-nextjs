@@ -28,7 +28,7 @@ export default function HeroSection() {
         
         <h1 className="text-5xl md:text-6xl font-bold mb-4">
           Jelajahi Keindahan<br />
-          <span className="text-blue-400">Desa Wisata Kami</span>
+          <span className="text-blue-400">Desa Way Kalam Kami</span>
         </h1>
         
         <p className="text-xl text-slate-200 mb-8 max-w-2xl mx-auto">
@@ -41,7 +41,6 @@ export default function HeroSection() {
             className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition flex items-center gap-2"
           >
             Jelajahi Wisata
-            <ChevronDown className="w-5 h-5" />
           </Link>
           <Link 
             href="#umkm"
