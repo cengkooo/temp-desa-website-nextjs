@@ -1,8 +1,11 @@
 import Navbar from "@/components/public/Navbar"
 import HeroSection from "@/components/public/HeroSection"
 import AboutSection from "@/components/public/AboutSection"
+import HistorySection from "@/components/public/HistorySection"
+import LocationSection from "@/components/public/LocationSection"
+import TravelGuideSection from "@/components/public/TravelGuideSection"
+import FAQSection from "@/components/public/FAQSection"
 import GallerySection from "@/components/public/GallerySection"
-import TeamSection from "@/components/public/TeamSection"
 import Footer from "@/components/public/Footer"
 
 export default function Home() {
@@ -11,8 +14,11 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <AboutSection />
+      <HistorySection />
       <GallerySection />
-      <TeamSection />
+      <LocationSection />
+      <TravelGuideSection />
+      <FAQSection />
       <Footer />
     </div>
   )
