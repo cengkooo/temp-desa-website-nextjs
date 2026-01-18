@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Image as ImageIcon, MessageCircle } from 'lucide-react'
 import { StarRating } from '@/components/umkm'
+import { resolveUmkmImageUrl } from '@/lib/supabase/storage'
 
 interface UmkmProduct {
   id: string
@@ -32,14 +33,8 @@ export default function ProductCard({ product }: { product: UmkmProduct }) {
     window.open(`https://wa.me/${cleanNumber}?text=${message}`, '_blank')
   }
 
-  const normalizedImage = product.photo_url?.trim() || ''
-  const isValidImageSrc =
-    !!normalizedImage &&
-    (normalizedImage.startsWith('/') ||
-      normalizedImage.startsWith('http://') ||
-      normalizedImage.startsWith('https://') ||
-      normalizedImage.startsWith('data:image/')) &&
-    !normalizedImage.startsWith('blob:')
+  const normalizedImage = resolveUmkmImageUrl(product.photo_url) || ''
+  const isValidImageSrc = !!normalizedImage
 
   return (
     <div className="bg-white rounded-xl overflow-hidden border border-slate-200 hover:shadow-lg transition-shadow group">

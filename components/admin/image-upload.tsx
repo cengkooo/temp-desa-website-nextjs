@@ -33,10 +33,10 @@ export default function ImageUpload({
       return
     }
 
-    // Validate file sizes (max 5MB per file)
-    const invalidFiles = acceptedFiles.filter(file => file.size > 5 * 1024 * 1024)
+    // Validate file sizes (max 1MB per file)
+    const invalidFiles = acceptedFiles.filter(file => file.size > 1 * 1024 * 1024)
     if (invalidFiles.length > 0) {
-      setError('Beberapa file melebihi 5MB')
+      setError('Beberapa file melebihi 1MB')
       return
     }
 
@@ -95,7 +95,7 @@ export default function ImageUpload({
                 Drag & drop atau klik untuk pilih foto
               </p>
               <p className="text-xs text-slate-500 mt-2">
-                PNG, JPG, WEBP (max 5MB per file) • {images.length}/{maxFiles} foto
+                PNG, JPG, WEBP (max 1MB per file) • {images.length}/{maxFiles} foto
               </p>
             </div>
           </div>

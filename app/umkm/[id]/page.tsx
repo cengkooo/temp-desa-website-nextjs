@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server"
 import { notFound } from "next/navigation"
 import { ProductDetailHero } from "@/components/umkm"
 import Footer from "@/components/public/Footer"
+import { resolveUmkmImageUrl } from "@/lib/supabase/storage"
 
 interface PageProps {
   params: Promise<{
@@ -41,26 +42,13 @@ export default async function ProductDetailPage({ params }: PageProps) {
     notFound()
   }
 
-  const sanitizeImageSrc = (value: unknown) => {
-    if (typeof value !== 'string') return undefined
-    const trimmed = value.trim().replace(/^['"]|['"]$/g, '')
-    if (!trimmed) return undefined
-    if (trimmed.startsWith('blob:')) return undefined
-    const isValid =
-      trimmed.startsWith('/') ||
-      trimmed.startsWith('http://') ||
-      trimmed.startsWith('https://') ||
-      trimmed.startsWith('data:image/')
-    return isValid ? trimmed : undefined
-  }
-
   // Calculate review count based on rating (mock)
   const reviewCount = Math.floor(product.rating * 20) + stableModFromString(String(product.id), 50)
 
   return (
     <div className="min-h-screen bg-white">
       <ProductDetailHero
-        image={sanitizeImageSrc(product.photo_url) || "/uploaded_image_0_1768037972713.png"}
+        image={resolveUmkmImageUrl(product.photo_url) || "/uploaded_image_0_1768037972713.png"}
         category={categoryMap[product.category] || product.category}
         name={product.name}
         rating={product.rating}

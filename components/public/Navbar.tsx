@@ -23,7 +23,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <img src="/images/logo_lamsel.png" alt="Logo" className="w-10 h-10 object-contain" />
+            <img src="/logo_lamsel.png" alt="Logo" className="w-10 h-10 object-contain" />
             <span className="text-xl font-bold text-slate-900">Way Kalam</span>
           </Link>
 

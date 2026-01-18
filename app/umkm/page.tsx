@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server"
 import { UmkmHero } from "@/components/umkm"
 import UmkmClient from "@/components/umkm/UmkmClient"
 import Footer from "@/components/public/Footer"
+import { resolveUmkmImageUrl } from "@/lib/supabase/storage"
 
 export const metadata = {
   title: "Produk UMKM Desa - Desa Wisata",
@@ -30,14 +31,6 @@ export default async function UmkmPage() {
     console.error('Error fetching products:', error.message || error)
   }
 
-  const sanitizeImageSrc = (value: unknown) => {
-    if (typeof value !== 'string') return undefined
-    const trimmed = value.trim().replace(/^['"]|['"]$/g, '')
-    if (!trimmed) return undefined
-    if (trimmed.startsWith('blob:')) return undefined
-    return trimmed
-  }
-
   // Transform products to match our interface
   const transformedProducts = (products || []).map((product) => ({
     id: String(product.id),
@@ -46,7 +39,7 @@ export default async function UmkmPage() {
     price: Number(product.price),
     category: categoryMap[product.category] || product.category,
     rating: Number(product.rating ?? 0),
-    image: sanitizeImageSrc(product.photo_url),
+    image: resolveUmkmImageUrl(product.photo_url) || '',
     whatsapp: product.whatsapp,
     createdAt: new Date(product.created_at),
     updatedAt: new Date(product.updated_at),

@@ -8,6 +8,7 @@ import { formatCurrency, formatWhatsApp } from '@/lib/utils/format'
 import RatingInput from '@/components/admin/rating-input'
 import { ToastProvider, useToast } from '@/lib/hooks/use-toast'
 import { createClient } from '@/lib/supabase/client'
+import { uploadUmkmImage, resolveUmkmImageUrl, MAX_IMAGE_SIZE } from '@/lib/supabase/storage'
 
 type UmkmProductRow = {
   id: string
@@ -52,7 +53,7 @@ function UMKMContent() {
         price: Number(row.price),
         whatsapp: row.whatsapp,
         rating: Number(row.rating ?? 0),
-        image: row.photo_url ?? undefined,
+        image: resolveUmkmImageUrl(row.photo_url),
         createdAt: new Date(row.created_at),
         updatedAt: new Date(row.updated_at),
       }))
@@ -118,22 +119,14 @@ function UMKMContent() {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        error('Ukuran file maksimal 5MB')
+      if (file.size > MAX_IMAGE_SIZE) {
+        error('Ukuran file maksimal 1MB')
         return
       }
       setImageFile(file)
       setImagePreview(URL.createObjectURL(file))
     }
   }
-
-  const fileToDataUrl = (file: File) =>
-    new Promise<string>((resolve, reject) => {
-      const reader = new FileReader()
-      reader.onload = () => resolve(String(reader.result))
-      reader.onerror = () => reject(new Error('Failed to read image file'))
-      reader.readAsDataURL(file)
-    })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -149,7 +142,25 @@ function UMKMContent() {
       return
     }
 
-    const photoUrl = imageFile ? await fileToDataUrl(imageFile) : (imagePreview || null)
+    let photoUrl: string | null = null
+
+    try {
+      // Upload new image if file selected
+      if (imageFile) {
+        photoUrl = await uploadUmkmImage(imageFile)
+      } else if (editingProduct?.image) {
+        // Keep existing image path (extract key from URL if needed)
+        const existingUrl = editingProduct.image
+        if (existingUrl.includes('/storage/v1/object/public/umkm-images/')) {
+          photoUrl = existingUrl.split('/storage/v1/object/public/umkm-images/')[1]
+        } else if (!existingUrl.startsWith('http')) {
+          photoUrl = existingUrl
+        }
+      }
+    } catch (uploadError) {
+      error(uploadError instanceof Error ? uploadError.message : 'Gagal mengupload gambar')
+      return
+    }
 
     const productData = {
       name: formData.name,
@@ -390,7 +401,7 @@ function UMKMContent() {
                           <p className="text-sm font-medium text-slate-900">
                             {imagePreview ? 'Ganti Foto' : 'Upload Foto'}
                           </p>
-                          <p className="text-xs text-slate-500">PNG, JPG (max 5MB)</p>
+                          <p className="text-xs text-slate-500">PNG, JPG (max 1MB)</p>
                         </div>
                       </div>
                     </div>
