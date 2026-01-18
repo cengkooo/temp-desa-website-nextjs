@@ -41,7 +41,7 @@ export default function AboutSection() {
           <div className="relative">
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/p7.png"
+                src="/p2.png"
                 alt="Tentang Desa"
                 fill
                 className="object-cover"
