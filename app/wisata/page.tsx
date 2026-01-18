@@ -1,5 +1,5 @@
 import { getWisataBySlug } from "@/lib/data/wisata-data"
-import { WisataHero, WisataInfo, WisataGallery, WisataFacilities, WisataSidebar } from "@/components/wisata"
+import { WisataHero, WisataInfo, WisataGallery, WisataFacilities, WisataRelatedInfo, WisataSidebar } from "@/components/wisata"
 import Footer from "@/components/public/Footer"
 
 export default function WisataPage() {
@@ -21,6 +21,7 @@ export default function WisataPage() {
             <WisataInfo description={wisata.description} />
             <WisataGallery images={wisata.gallery} />
             <WisataFacilities facilities={wisata.facilities} />
+            <WisataRelatedInfo {...wisata.relatedInfo} />
           </div>
 
           {/* Sidebar */}

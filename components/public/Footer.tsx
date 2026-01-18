@@ -1,87 +1,154 @@
 import Link from "next/link"
-import { Mountain, Facebook, Instagram, Youtube } from "lucide-react"
+import Image from "next/image"
+import { Phone, Mail, Facebook, Instagram, Youtube } from "lucide-react"
 
-const quickLinks = [
-  { href: "/", label: "Beranda" },
-  { href: "/wisata", label: "Wisata" },
-  { href: "/umkm", label: "UMKM" },
+const relatedLinks = [
+  { name: "e-Prodskel", logo: "/prodeskel.png", href: "https://prodeskel.binapemdes.kemendagri.go.id/app_Login/" },
+  { name: "SID Kemendesa", logo: "/SID.png", href: "https://sid.kemendesa.go.id/" },
+  { name: "BUMDes", logo: "/Bumdes.png", href: "https://bumdes.kemendesa.go.id/" },
+  { name: "Desaku Maju", logo: "/Logo_Desaku_Maju_128.png", href: "#" },
 ]
 
-const contactInfo = [
-  "Jl. Desa Wisata No. 123, Kecamatan Alam, Kabupaten Indah",
-  "+62 817 3456 7890",
-  "info@desawisata.id"
+const socialMedia = [
+  {
+    href: "https://web.facebook.com/deswita.waykalam?_rdc=1&_rdr#",
+    icon: Facebook,
+    hover: "hover:text-blue-700",
+  },
+  {
+    href: "https://www.instagram.com/airterjun_waykalam/",
+    icon: Instagram,
+    hover: "hover:text-pink-600",
+  },
+  {
+    href: "https://www.youtube.com/@WAYKALAMTVOFFICIAL",
+    icon: Youtube,
+    hover: "hover:text-red-600",
+  },
+
 ]
 
-const socialLinks = [
-  { href: "#", icon: Facebook, hoverColor: "hover:bg-blue-600" },
-  { href: "#", icon: Instagram, hoverColor: "hover:bg-pink-600" },
-  { href: "#", icon: Youtube, hoverColor: "hover:bg-red-600" },
-]
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Mountain className="w-8 h-8 text-blue-400" />
-              <span className="text-xl font-bold">Desa Wisata</span>
+    <footer className="bg-blue-700 text-white">
+
+
+      <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+
+
+        <div>
+          <h3 className="font-semibold mb-4 border-b border-white/40 pb-2">
+            Link Terkait
+          </h3>
+          <div className="grid grid-cols-2 gap-4">
+            {relatedLinks.map((item, i) => (
+              <Link
+                  key={i}
+                  href={item.href}
+                  className="bg-white text-blue-700 rounded-lg p-4 flex flex-col items-center hover:shadow-md transition"
+                >
+                  {/* LOGO WRAPPER */}
+                  <div className="w-16 h-16 flex items-center justify-center">
+                    <Image
+                      src={item.logo}
+                      alt={item.name}
+                      width={64}
+                      height={64}
+                      className="object-contain max-w-full max-h-full"
+                    />
+                  </div>
+
+                  <span className="text-xs mt-3 text-center font-medium">
+                    {item.name}
+                  </span>
+              </Link>
+
+            ))}
+          </div>
+        </div>
+
+        {/* HUBUNGI KAMI */}
+        <div>
+          <h3 className="font-semibold mb-4 border-b border-white/40 pb-2">
+            Hubungi Kami
+          </h3>
+
+          <div className="flex gap-3 mb-4">
+            <Image
+              src="/Logo_Lampung_Selatan.png"
+              alt="Logo Desa"
+              width={55}
+              height={55}
+            />
+            <div className="text-sm">
+              <p className="font-semibold">Desa Way Kalam</p>
+              <p className="opacity-90 leading-relaxed">
+                Kec. Penengahan<br />
+                Kab. Lampung Selatan<br />
+                Provinsi Lampung
+              </p>
             </div>
-            <p className="text-slate-400 text-sm leading-relaxed">
-              Selamat datang di Desa Wisata, destinasi wisata alam dan budaya yang menawarkan pengalaman tak terlupakan.
-            </p>
           </div>
 
-          {/* Tautan Cepat */}
-          <div>
-            <h3 className="font-semibold mb-4">Tautan Cepat</h3>
-            <ul className="space-y-2 text-slate-400 text-sm">
-              {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <Link href={link.href} className="hover:text-white transition">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ul className="text-sm space-y-2">
+            <li className="flex items-center gap-2">
+              <Phone size={16} /> 0823-7282-5801
+            </li>
+            <li className="flex items-center gap-2">
+              <Mail size={16} /> pemdeswaykalam@gmail.com
+            </li>
+          </ul>
 
-          {/* Kontak */}
-          <div>
-            <h3 className="font-semibold mb-4">Kontak</h3>
-            <ul className="space-y-2 text-slate-400 text-sm">
-              {contactInfo.map((info, index) => (
-                <li key={index}>{info}</li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Ikuti Kami */}
-          <div>
-            <h3 className="font-semibold mb-4">Ikuti Kami</h3>
-            <div className="flex gap-4">
-              {socialLinks.map((social, index) => {
-                const Icon = social.icon
+            <div className="flex gap-3 mt-4">
+              {socialMedia.map((item, i) => {
+                const Icon = item.icon
                 return (
-                  <a 
-                    key={index}
-                    href={social.href} 
-                    className={`w-10 h-10 bg-slate-800 ${social.hoverColor} rounded-lg flex items-center justify-center transition`}
+                  <a
+                    key={i}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`p-2 bg-white/20 rounded-md hover:bg-white ${item.hover} transition`}
                   >
-                    <Icon className="w-5 h-5" />
+                    <Icon size={18} />
                   </a>
                 )
               })}
             </div>
+
+        </div>
+
+        {/* LOKASI BALAI DESA */}
+        <div>
+          <h3 className="font-semibold mb-4 border-b border-white/40 pb-2">
+            Lokasi Balai Desa
+          </h3>
+          <div className="overflow-hidden rounded-lg border border-white/30">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!..."
+              width="100%"
+              height="220"
+              loading="lazy"
+            />
           </div>
         </div>
 
-        <div className="border-t border-slate-800 mt-8 pt-8 text-center text-slate-400 text-sm">
-          <p>© 2026 Desa Wisata. Hak Cipta Dilindungi.</p>
-        </div>
+      </div>
+
+      {/* ===== FOOTER BAWAH ===== */}
+      <div className="border-t border-white/30 py-6 text-center px-4 text-sm">
+        <p className="font-medium">
+          Portal Resmi Sistem Informasi Pemerintahan Desa
+        </p>
+        <p className="opacity-90">
+          Desa Way Kalam, Kecamatan Penengahan, Kabupaten Lampung Selatan
+        </p>
+
+        
+        <p className="mt-4 opacity-70">
+          © 2026 • Dikembangkan oleh Tim KKN
+        </p>
       </div>
     </footer>
   )

@@ -1,4 +1,4 @@
-import { Car, Store, Camera, Toilet, Users, Wifi, LucideIcon } from "lucide-react"
+import { Car, Store, Camera, Toilet, Users, Wifi, Hotel, MapPin, LucideIcon } from "lucide-react"
 
 export interface WisataData {
   slug: string
@@ -14,6 +14,23 @@ export interface WisataData {
     icon: LucideIcon
     name: string
   }[]
+  relatedInfo: {
+    label: string
+    title: string
+    description?: string
+    categories: {
+      icon: LucideIcon
+      title: string
+      items: {
+        title: string
+        description: string
+        price: string
+        priceUnit?: string
+        rating: number
+        href: string
+      }[]
+    }[]
+  }
   location: string
   operationalHours: string
   contact: string
@@ -46,6 +63,117 @@ export const wisataData: Record<string, WisataData> = {
       { icon: Users, name: "Pemandu Wisata" },
       { icon: Wifi, name: "WiFi Gratis" }
     ],
+    relatedInfo: {
+      label: "LAYANAN WISATA",
+      title: "Fasilitas Pendukung Wisata",
+      description: "Nikmati berbagai layanan pendukung untuk pengalaman wisata yang lebih lengkap dan nyaman",
+      categories: [
+        {
+          icon: Hotel,
+          title: "Penginapan",
+          items: [
+            {
+              title: "Homestay Sawah Indah",
+              description: "Penginapan nyaman dengan pemandangan sawah",
+              price: "Rp 250.000",
+              priceUnit: "per malam",
+              rating: 4.8,
+              href: "/layanan/homestay-sawah-indah"
+            },
+            {
+              title: "Vila Pegunungan",
+              description: "Vila mewah di atas bukit dengan view spektakuler",
+              price: "Rp 750.000",
+              priceUnit: "per malam",
+              rating: 4.9,
+              href: "/layanan/vila-pegunungan"
+            },
+            {
+              title: "Camping Ground Alam",
+              description: "Area camping dengan fasilitas lengkap",
+              price: "Rp 50.000",
+              priceUnit: "per tenda",
+              rating: 4.6,
+              href: "/layanan/camping-ground-alam"
+            }
+          ]
+        },
+        {
+          icon: Users,
+          title: "Tour Guide",
+          items: [
+            {
+              title: "Pak Slamet - Pemandu Wisata",
+              description: "Pemandu berpengalaman 15 tahun",
+              price: "Rp 150.000",
+              priceUnit: "per hari",
+              rating: 5,
+              href: "/layanan/pak-slamet-pemandu-wisata"
+            },
+            {
+              title: "Bu Yanti - Guide Kuliner",
+              description: "Spesialis tur kuliner dan budaya",
+              price: "Rp 100.000",
+              priceUnit: "per hari",
+              rating: 4.9,
+              href: "/layanan/bu-yanti-guide-kuliner"
+            }
+          ]
+        },
+        {
+          icon: Car,
+          title: "Rental Mobil & Motor",
+          items: [
+            {
+              title: "Rental Motor Jaya",
+              description: "Sewa motor harian kondisi prima",
+              price: "Rp 75.000",
+              priceUnit: "per hari",
+              rating: 4.7,
+              href: "/layanan/rental-motor-jaya"
+            },
+            {
+              title: "Rental Mobil Berkah",
+              description: "Sewa mobil + driver berpengalaman",
+              price: "Rp 400.000",
+              priceUnit: "per hari",
+              rating: 4.8,
+              href: "/layanan/rental-mobil-berkah"
+            }
+          ]
+        },
+        {
+          icon: MapPin,
+          title: "Wisata Lainnya",
+          items: [
+            {
+              title: "Curug Biru",
+              description: "Air terjun dengan kolam berwarna biru alami",
+              price: "Rp 10.000",
+              priceUnit: "per orang",
+              rating: 4.7,
+              href: "/layanan/curug-biru"
+            },
+            {
+              title: "Bukit Sunrise",
+              description: "Spot terbaik melihat sunrise dan lautan awan",
+              price: "Rp 5.000",
+              priceUnit: "per orang",
+              rating: 4.9,
+              href: "/layanan/bukit-sunrise"
+            },
+            {
+              title: "Desa Budaya Tradisional",
+              description: "Pengalaman budaya dan tradisi lokal",
+              price: "Rp 25.000",
+              priceUnit: "per orang",
+              rating: 4.8,
+              href: "/layanan/desa-budaya-tradisional"
+            }
+          ]
+        }
+      ]
+    },
     location: "Dusun Segar, Desa Wisata, Kec. Alam, Kab. Indah",
     operationalHours: "Senin - Minggu: 07.00 - 17.00 WIB",
     contact: "+62 812 3456 7890",

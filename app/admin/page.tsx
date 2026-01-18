@@ -6,6 +6,29 @@ export default async function AdminPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
+  // Fetch statistics from Supabase
+  const { data: products, error } = await supabase
+    .from('umkm_products')
+    .select('rating, name')
+    .eq('is_active', true)
+
+  // Calculate statistics
+  const totalProducts = products?.length || 0
+  
+  // Count unique UMKM (assuming each unique product name is a different UMKM)
+  const uniqueUmkm = products 
+    ? new Set(products.map(p => p.name.split(' ')[0])).size 
+    : 0
+  
+  // Calculate average rating
+  const avgRating = products && products.length > 0
+    ? (products.reduce((sum, p) => sum + (p.rating || 0), 0) / products.length).toFixed(1)
+    : '0.0'
+
+  if (error) {
+    console.error('Error fetching dashboard stats:', error)
+  }
+
   return (
     <div className="space-y-8">
       {/* Welcome Section */}
@@ -22,7 +45,7 @@ export default async function AdminPage() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-blue-100 text-sm font-medium">Total Produk</p>
-              <p className="text-4xl font-bold mt-2">0</p>
+              <p className="text-4xl font-bold mt-2">{totalProducts}</p>
             </div>
             <div className="bg-white/20 p-3 rounded-lg">
               <Package className="w-8 h-8" />
@@ -34,7 +57,7 @@ export default async function AdminPage() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-green-100 text-sm font-medium">Total UMKM</p>
-              <p className="text-4xl font-bold mt-2">0</p>
+              <p className="text-4xl font-bold mt-2">{uniqueUmkm}</p>
             </div>
             <div className="bg-white/20 p-3 rounded-lg">
               <Store className="w-8 h-8" />
@@ -46,7 +69,7 @@ export default async function AdminPage() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-purple-100 text-sm font-medium">Rata-rata Rating</p>
-              <p className="text-4xl font-bold mt-2">0.0</p>
+              <p className="text-4xl font-bold mt-2">{avgRating}</p>
             </div>
             <div className="bg-white/20 p-3 rounded-lg">
               <TrendingUp className="w-8 h-8" />
