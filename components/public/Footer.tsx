@@ -1,11 +1,12 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Mountain, Facebook, Instagram, Youtube, Phone, Mail } from "lucide-react"
+import { Phone, Mail, Facebook, Instagram, Youtube } from "lucide-react"
 
-const quickLinks = [
-  { href: "/", label: "Beranda" },
-  { href: "/wisata", label: "Wisata" },
-  { href: "/umkm", label: "UMKM" },
+const relatedLinks = [
+  { name: "e-Prodskel", logo: "/prodeskel.png", href: "https://prodeskel.binapemdes.kemendagri.go.id/app_Login/" },
+  { name: "SID Kemendesa", logo: "/SID.png", href: "https://sid.kemendesa.go.id/" },
+  { name: "BUMDes", logo: "/Bumdes.png", href: "https://bumdes.kemendesa.go.id/" },
+  { name: "Desaku Maju", logo: "/Logo_Desaku_Maju_128.png", href: "#" },
 ]
 
 const socialMedia = [
@@ -24,76 +25,80 @@ const socialMedia = [
     icon: Youtube,
     hover: "hover:text-red-600",
   },
+
 ]
+
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-blue-700 text-white">
 
-          {/* BRAND */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Mountain className="w-8 h-8 text-blue-400" />
-              <span className="text-xl font-bold">Desa Wisata</span>
+
+      <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+
+
+        <div>
+          <h3 className="font-semibold mb-4 border-b border-white/40 pb-2">
+            Link Terkait
+          </h3>
+          <div className="grid grid-cols-2 gap-4">
+            {relatedLinks.map((item, i) => (
+              <Link
+                  key={i}
+                  href={item.href}
+                  className="bg-white text-blue-700 rounded-lg p-4 flex flex-col items-center hover:shadow-md transition"
+                >
+                  {/* LOGO WRAPPER */}
+                  <div className="w-16 h-16 flex items-center justify-center">
+                    <Image
+                      src={item.logo}
+                      alt={item.name}
+                      width={64}
+                      height={64}
+                      className="object-contain max-w-full max-h-full"
+                    />
+                  </div>
+
+                  <span className="text-xs mt-3 text-center font-medium">
+                    {item.name}
+                  </span>
+              </Link>
+
+            ))}
+          </div>
+        </div>
+
+        {/* HUBUNGI KAMI */}
+        <div>
+          <h3 className="font-semibold mb-4 border-b border-white/40 pb-2">
+            Hubungi Kami
+          </h3>
+
+          <div className="flex gap-3 mb-4">
+            <Image
+              src="/Logo_Lampung_Selatan.png"
+              alt="Logo Desa"
+              width={55}
+              height={55}
+            />
+            <div className="text-sm">
+              <p className="font-semibold">Desa Way Kalam</p>
+              <p className="opacity-90 leading-relaxed">
+                Kec. Penengahan<br />
+                Kab. Lampung Selatan<br />
+                Provinsi Lampung
+              </p>
             </div>
-            <p className="text-slate-400 text-sm leading-relaxed">
-              Portal resmi Desa Way Kalam sebagai pusat informasi wisata,
-              pemerintahan desa, dan potensi lokal.
-            </p>
           </div>
 
-          {/* QUICK LINKS */}
-          <div>
-            <h3 className="font-semibold mb-4 border-b border-white/40 pb-2">
-              Navigasi
-            </h3>
-            <ul className="space-y-2 text-sm">
-              {quickLinks.map((item, i) => (
-                <li key={i}>
-                  <Link
-                    href={item.href}
-                    className="hover:text-blue-400 transition"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* HUBUNGI KAMI */}
-          <div>
-            <h3 className="font-semibold mb-4 border-b border-white/40 pb-2">
-              Hubungi Kami
-            </h3>
-
-            <div className="flex gap-3 mb-4">
-              <Image
-                src="/Logo_Lampung_Selatan.png"
-                alt="Logo Desa"
-                width={55}
-                height={55}
-              />
-              <div className="text-sm">
-                <p className="font-semibold">Desa Way Kalam</p>
-                <p className="opacity-90 leading-relaxed">
-                  Kec. Penengahan<br />
-                  Kab. Lampung Selatan<br />
-                  Provinsi Lampung
-                </p>
-              </div>
-            </div>
-
-            <ul className="text-sm space-y-2">
-              <li className="flex items-center gap-2">
-                <Phone size={16} /> 0823-7282-5801
-              </li>
-              <li className="flex items-center gap-2">
-                <Mail size={16} /> pemdeswaykalam@gmail.com
-              </li>
-            </ul>
+          <ul className="text-sm space-y-2">
+            <li className="flex items-center gap-2">
+              <Phone size={16} /> 0823-7282-5801
+            </li>
+            <li className="flex items-center gap-2">
+              <Mail size={16} /> pemdeswaykalam@gmail.com
+            </li>
+          </ul>
 
             <div className="flex gap-3 mt-4">
               {socialMedia.map((item, i) => {
@@ -111,26 +116,27 @@ export default function Footer() {
                 )
               })}
             </div>
-          </div>
 
-          {/* LOKASI */}
-          <div>
-            <h3 className="font-semibold mb-4 border-b border-white/40 pb-2">
-              Lokasi Balai Desa
-            </h3>
-            <div className="overflow-hidden rounded-lg border border-white/30">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d417.25847504504753!2d105.66362837395172!3d-5.7628348460259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e410de67c7d2147%3A0x2690919fb5482f1b!2sBALAI%20DESA%20WAY%20KALAM!5e0!3m2!1sid!2sid!4v1768723776430!5m2!1sid!2sid"
-                width="100%"
-                height="220"
-                loading="lazy"
-              />
-            </div>
+        </div>
+
+        {/* LOKASI BALAI DESA */}
+        <div>
+          <h3 className="font-semibold mb-4 border-b border-white/40 pb-2">
+            Lokasi Balai Desa
+          </h3>
+          <div className="overflow-hidden rounded-lg border border-white/30">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d417.25847504504753!2d105.66362837395172!3d-5.7628348460259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e410de67c7d2147%3A0x2690919fb5482f1b!2sBALAI%20DESA%20WA%20KALAM!5e0!3m2!1sid!2sid!4v1768723776430!5m2!1sid!2sid"
+              width="100%"
+              height="220"
+              loading="lazy"
+            />
           </div>
         </div>
+
       </div>
 
-      {/* FOOTER BAWAH */}
+      {/* ===== FOOTER BAWAH ===== */}
       <div className="border-t border-white/30 py-6 text-center px-4 text-sm">
         <p className="font-medium">
           Portal Resmi Sistem Informasi Pemerintahan Desa
@@ -138,6 +144,8 @@ export default function Footer() {
         <p className="opacity-90">
           Desa Way Kalam, Kecamatan Penengahan, Kabupaten Lampung Selatan
         </p>
+
+        
         <p className="mt-4 opacity-70">
           © 2026 • Dikembangkan oleh Tim KKN
         </p>
