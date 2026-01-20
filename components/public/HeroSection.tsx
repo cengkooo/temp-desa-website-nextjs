@@ -62,13 +62,13 @@ export default function HeroSection() {
 
         <div className="flex items-center justify-center gap-4">
           <Link 
-            href="wisata"
-            className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition"
+            href="#wisata"
+            className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition flex items-center gap-2"
           >
             Jelajahi Wisata
           </Link>
           <Link 
-            href="umkm"
+            href="#umkm"
             className="px-8 py-4 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white font-semibold rounded-lg transition border border-white/30"
           >
             Lihat Produk UMKM
