@@ -1,6 +1,13 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Phone, Mail, Facebook, Instagram, Youtube } from "lucide-react"
+import { Phone, Mail } from "lucide-react"
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaYoutube,
+  FaTiktok,
+} from "react-icons/fa"
+
 
 const relatedLinks = [
   { name: "e-Prodskel", logo: "/prodeskel.png", href: "https://prodeskel.binapemdes.kemendagri.go.id/app_Login/" },
@@ -12,18 +19,23 @@ const relatedLinks = [
 const socialMedia = [
   {
     href: "https://web.facebook.com/deswita.waykalam?_rdc=1&_rdr#",
-    icon: Facebook,
+    icon: FaFacebookF,
     hover: "hover:text-blue-700",
   },
   {
     href: "https://www.instagram.com/airterjun_waykalam/",
-    icon: Instagram,
+    icon: FaInstagram,
     hover: "hover:text-pink-600",
   },
   {
     href: "https://www.youtube.com/@WAYKALAMTVOFFICIAL",
-    icon: Youtube,
+    icon: FaYoutube,
     hover: "hover:text-red-600",
+  },
+  {
+    href: "https://www.tiktok.com/@aboutwaykalam",
+    icon: FaTiktok,
+    hover: "hover:text-black",
   },
 
 ]

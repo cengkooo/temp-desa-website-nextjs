@@ -7,7 +7,6 @@ interface RelatedItem {
   title: string
   shortDescription: string
   price: string
-  rating: number
 }
 
 interface LayananRelatedListProps {
@@ -48,10 +47,6 @@ export default function LayananRelatedList({
 
               <div className="flex items-center justify-between">
                 <p className="font-bold text-blue-600">{item.price}</p>
-                <div className="flex items-center gap-1 text-sm text-slate-600">
-                  <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                  <span>{item.rating.toFixed(1)}</span>
-                </div>
               </div>
             </Link>
           ))}

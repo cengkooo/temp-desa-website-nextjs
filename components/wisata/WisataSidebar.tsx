@@ -1,13 +1,16 @@
 "use client"
 
-import { MapPin, Clock, Phone } from "lucide-react"
+import { MapPin, Clock, Phone, Mail } from "lucide-react"
 
 interface WisataSidebarProps {
   location: string
   operationalHours: string
   contact: string
   ticketPrice: string
+  ticketMotor: string
+  ticketMobile: string
   whatsappNumber: string
+  email: string
   mapEmbedUrl?: string
 }
 
@@ -16,6 +19,9 @@ export default function WisataSidebar({
   operationalHours,
   contact,
   ticketPrice,
+  ticketMotor,
+  ticketMobile,
+  email,
   whatsappNumber,
   mapEmbedUrl
 }: WisataSidebarProps) {
@@ -51,23 +57,54 @@ export default function WisataSidebar({
               <p className="text-sm text-slate-600">{contact}</p>
             </div>
           </div>
+          <div className="flex gap-3">
+            <Mail className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="font-semibold text-slate-900 text-sm mb-1">Email</p>
+              <p className="text-sm text-slate-600">{email}</p>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Tiket Masuk */}
       <div className="bg-white border border-slate-200 rounded-xl p-6">
-        <h3 className="font-bold text-slate-900 mb-4">Tiket Masuk</h3>
-        <div className="mb-4">
-          <p className="text-3xl font-bold text-blue-600">{ticketPrice}</p>
-          <p className="text-sm text-slate-500">per orang</p>
-        </div>
-        <button
-          onClick={handleWhatsAppClick}
-          className="w-full px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition"
-        >
-          Hubungi via WhatsApp
-        </button>
+  <h3 className="font-bold text-slate-900 mb-4">Tiket Masuk</h3>
+
+  <div className="space-y-4 mb-6">
+    <div className="flex justify-between items-center">
+      <div>
+        <p className="font-semibold text-slate-800">Tiket Orang</p>
+        <p className="text-sm text-slate-500">per orang</p>
       </div>
+      <p className="text-xl font-bold text-blue-600">{ticketPrice}</p>
+    </div>
+
+    <div className="flex justify-between items-center">
+      <div>
+        <p className="font-semibold text-slate-800">Tiket Motor</p>
+        <p className="text-sm text-slate-500">per motor</p>
+      </div>
+      <p className="text-xl font-bold text-blue-600">{ticketMotor}</p>
+    </div>
+
+    <div className="flex justify-between items-center">
+      <div>
+        <p className="font-semibold text-slate-800">Tiket Mobil</p>
+        <p className="text-sm text-slate-500">per mobil</p>
+      </div>
+      <p className="text-xl font-bold text-blue-600">{ticketMobile}</p>
+    </div>
+  </div>
+
+  <button
+    onClick={handleWhatsAppClick}
+    className="w-full px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition"
+  >
+    Hubungi via WhatsApp
+  </button>
+</div>
+
 
       {/* Lokasi Map */}
       <div className="bg-white border border-slate-200 rounded-xl p-6">

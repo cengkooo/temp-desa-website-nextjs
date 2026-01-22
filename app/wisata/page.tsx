@@ -32,7 +32,10 @@ export default function WisataPage() {
                 operationalHours={wisata.operationalHours}
                 contact={wisata.contact}
                 ticketPrice={wisata.ticketPrice}
+                ticketMotor={wisata.ticketMotor}
+                ticketMobile={wisata.ticketMobile}
                 whatsappNumber={wisata.whatsappNumber}
+                email={wisata.email}
                 mapEmbedUrl={wisata.mapEmbedUrl}
               />
             </div>

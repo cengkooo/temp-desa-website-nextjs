@@ -4,8 +4,6 @@ interface LayananSidebarProps {
   title: string
   price: string
   priceUnit?: string
-  rating: number
-  reviewCount: number
   whatsappNumber: string
   contactNumber: string
 }
@@ -14,8 +12,6 @@ export default function LayananSidebar({
   title,
   price,
   priceUnit,
-  rating,
-  reviewCount,
   whatsappNumber,
   contactNumber
 }: LayananSidebarProps) {
@@ -28,11 +24,6 @@ export default function LayananSidebar({
       <p className="text-3xl font-bold text-blue-600">{price}</p>
       {priceUnit ? <p className="text-sm text-slate-500">/ {priceUnit}</p> : null}
 
-      <div className="mt-4 bg-slate-100 rounded-lg px-4 py-3 flex items-center gap-2 text-slate-700">
-        <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-        <span className="font-semibold">{rating.toFixed(1)}</span>
-        <span className="text-slate-500">- {reviewCount} ulasan</span>
-      </div>
 
       <a
         href={whatsappLink}

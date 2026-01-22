@@ -4,9 +4,7 @@ import { MapPin, Navigation, Store } from "lucide-react"
 import { useState } from "react"
 
 const filterOptions = [
-  { id: "wisata", label: "Wisata", icon: MapPin, color: "blue" },
-  { id: "penginapan", label: "Penginapan", icon: Navigation, color: "green" },
-  { id: "umkm", label: "UMKM", icon: Store, color: "orange" }
+  { id: "wisata", label: "Wisata", icon: MapPin, color: "blue" }
 ]
 
 export default function LocationSection() {
@@ -59,7 +57,7 @@ export default function LocationSection() {
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200">
           <div className="relative h-[500px] bg-slate-100">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126748.56347862248!2d105.26772834335936!3d-5.447380899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40c31df8c5e7e9%3A0xca0260d85c2ee9d0!2sWay%20Kalam%2C%20Kec.%20Rajabasa%2C%20Kabupaten%20Lampung%20Selatan%2C%20Lampung!5e0!3m2!1sid!2sid!4v1737037000000!5m2!1sid!2sid"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18882.97805057842!2d105.6666235630672!3d-5.762382970833746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e410c395e3394db%3A0xb326936886be8154!2sWay%20Kalam%2C%20Penengahan%2C%20South%20Lampung%20Regency%2C%20Lampung!5e0!3m2!1sen!2sid!4v1768895617434!5m2!1sen!2sid"
               width="100%"
               height="100%"
               style={{ border: 0 }}

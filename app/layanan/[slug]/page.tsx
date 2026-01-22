@@ -26,9 +26,6 @@ interface PageProps {
 
 const categoryIconMap: Record<LayananCategoryKey, LucideIcon> = {
   "penginapan": Home,
-  "tour-guide": Users,
-  "rental": Car,
-  "wisata-lainnya": MapPin
 }
 
 export default async function LayananDetailPage({ params }: PageProps) {
@@ -53,8 +50,6 @@ export default async function LayananDetailPage({ params }: PageProps) {
         categoryLabel={categoryMeta.label}
         CategoryIcon={CategoryIcon}
         title={layanan.title}
-        rating={layanan.rating}
-        reviewCount={layanan.reviewCount}
         location={layanan.location}
       />
 
@@ -87,8 +82,6 @@ export default async function LayananDetailPage({ params }: PageProps) {
                 title={layanan.title}
                 price={layanan.price}
                 priceUnit={layanan.priceUnit}
-                rating={layanan.rating}
-                reviewCount={layanan.reviewCount}
                 whatsappNumber={layanan.whatsappNumber}
                 contactNumber={layanan.contactNumber}
               />

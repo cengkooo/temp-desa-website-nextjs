@@ -5,7 +5,6 @@ interface RelatedItem {
   description: string
   price: string
   priceUnit?: string
-  rating: number
   href: string
 }
 
@@ -68,10 +67,6 @@ export default function WisataRelatedInfo({
                             <p className="font-semibold text-slate-900">{item.title}</p>
                             <p className="text-sm text-slate-500">{item.description}</p>
                           </div>
-                        </div>
-                        <div className="flex items-center gap-1 text-sm text-slate-600">
-                          <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                          <span className="font-semibold text-slate-800">{item.rating}</span>
                         </div>
                       </div>
 

@@ -1,4 +1,4 @@
-import { Car, Store, Camera, Toilet, Users, Wifi, Hotel, MapPin, LucideIcon } from "lucide-react"
+import { Car, Store, Camera, Toilet, Users,  Hotel, MapPin, LucideIcon, Home  } from "lucide-react"
 
 export interface WisataData {
   slug: string
@@ -26,7 +26,6 @@ export interface WisataData {
         description: string
         price: string
         priceUnit?: string
-        rating: number
         href: string
       }[]
     }[]
@@ -35,7 +34,10 @@ export interface WisataData {
   operationalHours: string
   contact: string
   ticketPrice: string
+  ticketMotor: string
+  ticketMobile: string
   whatsappNumber: string
+  email: string
   mapEmbedUrl?: string
 }
 
@@ -62,7 +64,8 @@ export const wisataData: Record<string, WisataData> = {
       { icon: Camera, name: "Spot Foto" },
       { icon: Toilet, name: "Toilet Bersih" },
       { icon: Users, name: "Pemandu Wisata" },
-      { icon: Wifi, name: "WiFi Gratis" }
+      { icon: Home, name: "Gazebo" }
+
     ],
     relatedInfo: {
       label: "LAYANAN WISATA",
@@ -74,112 +77,40 @@ export const wisataData: Record<string, WisataData> = {
           title: "Penginapan",
           items: [
             {
-              title: "Homestay Sawah Indah",
-              description: "Penginapan nyaman dengan pemandangan sawah",
-              price: "Rp 250.000",
+              title: "Homestay Bu Isah",
+              description: "Penginapan nyaman dengan lokasi strategis dekat air terjun",
+              price: "Rp 100.000",
               priceUnit: "per malam",
-              rating: 4.8,
+  
               href: "/layanan/homestay-sawah-indah"
             },
             {
-              title: "Vila Pegunungan",
-              description: "Vila mewah di atas bukit dengan view spektakuler",
-              price: "Rp 750.000",
+              title: "Homestay Pak Suri",
+              description: "Penginapan nyaman dengan lokasi tenang di desa",
+              price: "Rp 100.000",
               priceUnit: "per malam",
-              rating: 4.9,
               href: "/layanan/vila-pegunungan"
             },
             {
-              title: "Camping Ground Alam",
-              description: "Area camping dengan fasilitas lengkap",
-              price: "Rp 50.000",
-              priceUnit: "per tenda",
-              rating: 4.6,
+              title: "Homestay Bu Srie",
+              description: "Penginapan asri dengan lokasi tenang di desa",
+              price: "Rp 100.000",
+              priceUnit: "per malam",
               href: "/layanan/camping-ground-alam"
             }
           ]
-        },
-        {
-          icon: Users,
-          title: "Tour Guide",
-          items: [
-            {
-              title: "Pak Slamet - Pemandu Wisata",
-              description: "Pemandu berpengalaman 15 tahun",
-              price: "Rp 150.000",
-              priceUnit: "per hari",
-              rating: 5,
-              href: "/layanan/pak-slamet-pemandu-wisata"
-            },
-            {
-              title: "Bu Yanti - Guide Kuliner",
-              description: "Spesialis tur kuliner dan budaya",
-              price: "Rp 100.000",
-              priceUnit: "per hari",
-              rating: 4.9,
-              href: "/layanan/bu-yanti-guide-kuliner"
-            }
-          ]
-        },
-        {
-          icon: Car,
-          title: "Rental Mobil & Motor",
-          items: [
-            {
-              title: "Rental Motor Jaya",
-              description: "Sewa motor harian kondisi prima",
-              price: "Rp 75.000",
-              priceUnit: "per hari",
-              rating: 4.7,
-              href: "/layanan/rental-motor-jaya"
-            },
-            {
-              title: "Rental Mobil Berkah",
-              description: "Sewa mobil + driver berpengalaman",
-              price: "Rp 400.000",
-              priceUnit: "per hari",
-              rating: 4.8,
-              href: "/layanan/rental-mobil-berkah"
-            }
-          ]
-        },
-        {
-          icon: MapPin,
-          title: "Wisata Lainnya",
-          items: [
-            {
-              title: "Curug Biru",
-              description: "Air terjun dengan kolam berwarna biru alami",
-              price: "Rp 10.000",
-              priceUnit: "per orang",
-              rating: 4.7,
-              href: "/layanan/curug-biru"
-            },
-            {
-              title: "Bukit Sunrise",
-              description: "Spot terbaik melihat sunrise dan lautan awan",
-              price: "Rp 5.000",
-              priceUnit: "per orang",
-              rating: 4.9,
-              href: "/layanan/bukit-sunrise"
-            },
-            {
-              title: "Desa Budaya Tradisional",
-              description: "Pengalaman budaya dan tradisi lokal",
-              price: "Rp 25.000",
-              priceUnit: "per orang",
-              rating: 4.8,
-              href: "/layanan/desa-budaya-tradisional"
-            }
-          ]
-        }
+        }, 
       ]
     },
     location: "Way Kalam, Penengahan, Lampung Selatan, Lampung",
-    operationalHours: "Senin - Minggu: 07.00 - 17.00 WIB",
-    contact: "+62 812 3456 7890",
-    ticketPrice: "Rp 15.000",
-    whatsappNumber: "6281234567890",
+    operationalHours: "Senin - Minggu: 08.00 - 17.00 WIB",
+    contact: "+62 822 7929 2579",
+    ticketPrice: "Rp 7.000",
+    ticketMotor : "Rp 3.000",
+    ticketMobile : "Rp 5.000",
+    
+    whatsappNumber: "6282279292579",
+    email: "deswita.waykalam@gmail.com",
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.5600099706967!2d105.66186047503419!3d-5.776258394206341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e410dbdb97d85bd%3A0x4d4a89444dee19a5!2sAir%20Terjun%20Way%20Kalam!5e0!3m2!1sen!2sid!4v1768876950850!5m2!1sen!2sid"
   }
 }

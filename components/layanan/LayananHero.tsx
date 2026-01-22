@@ -8,8 +8,6 @@ interface LayananHeroProps {
   categoryLabel: string
   CategoryIcon: LucideIcon
   title: string
-  rating: number
-  reviewCount: number
   location: string
 }
 
@@ -19,8 +17,6 @@ export default function LayananHero({
   categoryLabel,
   CategoryIcon,
   title,
-  rating,
-  reviewCount,
   location
 }: LayananHeroProps) {
   return (
@@ -46,13 +42,6 @@ export default function LayananHero({
         </h1>
 
         <div className="flex flex-wrap items-center gap-4 text-slate-600">
-          <div className="flex items-center gap-2">
-            <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-            <span className="font-semibold text-slate-800">
-              {rating.toFixed(1)}
-            </span>
-            <span>({reviewCount} ulasan)</span>
-          </div>
           <div className="flex items-center gap-2">
             <MapPin className="w-4 h-4 text-blue-600" />
             <span>{location}</span>
